@@ -1,4 +1,5 @@
 import heroPizza from "@/assets/hero-pizza.png";
+import heroBg from "@/assets/hero-bg.mp4.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
 
 const perks = [
