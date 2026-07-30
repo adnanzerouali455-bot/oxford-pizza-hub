@@ -1,0 +1,77 @@
+import heroPizza from "@/assets/hero-pizza.png";
+import { useReveal } from "@/hooks/use-reveal";
+
+const perks = [
+  { label: "ONLY FRESH PRODUCTS", top: "2%", left: "0%" },
+  { label: "DRINKS AS A GIFT", top: "30%", left: "76%" },
+  { label: "FREE SHIPPING", top: "66%", left: "0%" },
+  { label: "EXCLUSIVE RECIPES", top: "94%", left: "56%" },
+];
+
+export function Hero() {
+  const { ref, visible } = useReveal<HTMLDivElement>(0.2);
+
+  return (
+    <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 md:px-8 lg:grid-cols-[1fr_1.05fr]">
+        <div>
+          <h1 className="font-display text-6xl leading-[0.95] sm:text-7xl md:text-8xl">
+            BEST <span className="text-primary">PIZZA</span>
+            <br />
+            IN OXFORD
+          </h1>
+          <p className="mt-6 max-w-md text-lg text-muted-foreground">
+            Delivery in 1 hour or the pizza is on us — and take{" "}
+            <span className="font-semibold text-accent">-30%</span> off your second pizza,
+            every single order.
+          </p>
+          <a
+            href="#menu"
+            className="btn-yellow mt-9 inline-flex items-center rounded-full px-9 py-4 text-lg"
+          >
+            GO TO THE MENU
+          </a>
+        </div>
+
+        <div ref={ref} className="relative mx-auto w-full max-w-xl px-4 py-10 sm:px-16 sm:py-14">
+          <img
+            src={heroPizza}
+            alt="Freshly baked pepperoni pizza from Oxford Pizza"
+            width={1024}
+            height={1024}
+            className="relative z-0 w-full drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]"
+          />
+          <svg
+            viewBox="0 0 400 400"
+            className="pointer-events-none absolute inset-0 z-20 h-full w-full"
+            aria-hidden="true"
+          >
+            <path
+              d="M20 40 C 160 10, 330 90, 340 150 C 350 220, 60 230, 30 290 C 5 340, 210 360, 320 350"
+              fill="none"
+              stroke="var(--accent)"
+              strokeWidth="2"
+              className="dashed-path"
+              opacity={visible ? 0.7 : 0}
+              style={{ transition: "opacity .8s ease" }}
+            />
+          </svg>
+
+          {perks.map((p, i) => (
+            <div
+              key={p.label}
+              data-visible={visible}
+              className="reveal absolute z-30 flex items-center gap-2"
+              style={{ top: p.top, left: p.left, transitionDelay: `${300 + i * 220}ms` }}
+            >
+              <span className="h-3 w-3 shrink-0 rounded-full bg-accent ring-4 ring-accent/25" />
+              <span className="rounded-full bg-surface/90 px-3 py-1 font-display text-xs tracking-widest whitespace-nowrap sm:text-sm">
+                {p.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
