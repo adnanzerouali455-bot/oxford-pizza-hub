@@ -14,7 +14,18 @@ export function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 md:px-8 lg:grid-cols-[1fr_1.05fr]">
+      <video
+        src={heroBg.url}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-40"
+      />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-background/85 via-background/75 to-background" />
+
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-4 md:px-8 lg:grid-cols-[1fr_1.05fr]">
         <div>
           <h1 className="font-display text-6xl leading-[0.95] sm:text-7xl md:text-8xl">
             BEST <span className="text-primary">PIZZA</span>
