@@ -8,9 +8,9 @@ import { Reviews } from "@/components/reviews";
 import { VideoSection } from "@/components/video-section";
 import { SiteFooter } from "@/components/site-footer";
 
-const title = "Oxford Pizza — Best Pizza in Oxford, Delivered in 1 Hour";
+const title = "Napolitano Berkane — Best Pizza, Delivered in 1 Hour";
 const description =
-  "Wood-fired pizza delivered across Oxford in under an hour. Get -30% off your second pizza, weekly promotions and free shipping.";
+  "Napolitano Berkane: wood-fired pizza delivered in under an hour. Get -30% off your second pizza, weekly promotions and free shipping.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

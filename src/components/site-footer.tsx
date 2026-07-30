@@ -1,4 +1,5 @@
-import { Facebook, Instagram, Twitter, Youtube, Pizza } from "lucide-react";
+import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import logo from "@/assets/napolitano-logo.jpg.asset.json";
 
 const socials = [
   { Icon: Instagram, label: "Instagram" },
@@ -12,11 +13,13 @@ export function SiteFooter() {
     <footer id="contacts" className="border-t border-border bg-surface/40">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-14 md:flex-row md:justify-between md:px-8">
         <div className="flex items-center gap-2">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-primary">
-            <Pizza className="h-5 w-5 text-primary-foreground" />
-          </span>
+          <img
+            src={logo.url}
+            alt="Napolitano Berkane logo"
+            className="h-10 w-10 rounded-full object-cover"
+          />
           <span className="font-display text-xl">
-            OXFORD<span className="text-primary">PIZZA</span>
+            NAPOLITANO <span className="text-primary">BERKANE</span>
           </span>
         </div>
 
