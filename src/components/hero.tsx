@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react";
 import heroPizza from "@/assets/hero-pizza.png";
 import heroBg from "@/assets/hero-bg.mp4.asset.json";
+import heroBgMobile from "@/assets/hero-bg-mobile.mp4.asset.json";
+import heroPoster from "@/assets/hero-poster.jpg.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
+
 
 const perks = [
   { label: "ONLY FRESH PRODUCTS", top: "2%", left: "0%" },
