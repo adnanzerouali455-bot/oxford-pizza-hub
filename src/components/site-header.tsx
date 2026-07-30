@@ -1,4 +1,5 @@
-import { Phone, ShoppingBasket, Pizza } from "lucide-react";
+import { Phone, ShoppingBasket } from "lucide-react";
+import logo from "@/assets/napolitano-logo.jpg.asset.json";
 
 const links = ["MENU", "SHARES", "REVIEWS", "CONTACTS"];
 
@@ -7,11 +8,13 @@ export function SiteHeader({ count, bump }: { count: number; bump: boolean }) {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center gap-6 px-4 md:px-8">
         <a href="#top" className="flex items-center gap-2">
-          <span className="grid h-11 w-11 place-items-center rounded-full bg-primary">
-            <Pizza className="h-6 w-6 text-primary-foreground" />
-          </span>
+          <img
+            src={logo.url}
+            alt="Napolitano Berkane logo"
+            className="h-11 w-11 rounded-full object-cover"
+          />
           <span className="font-display text-2xl leading-none">
-            OXFORD<span className="text-primary">PIZZA</span>
+            NAPOLITANO <span className="text-primary">BERKANE</span>
           </span>
         </a>
 
