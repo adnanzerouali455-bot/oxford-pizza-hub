@@ -6,10 +6,22 @@ import p3 from "@/assets/pizza-3.png";
 import p4 from "@/assets/pizza-4.png";
 import p5 from "@/assets/pizza-5.png";
 import p6 from "@/assets/pizza-6.png";
+import pastaImg from "@/assets/pasta-1.png";
+import burgerImg from "@/assets/burger-1.png";
+import heroPizza from "@/assets/hero-pizza.png";
 
 type Product = { name: string; ingredients: string; price: number; img: string };
 
-const tabs = ["PIZZA", "APPETIZER", "DRINKS", "DESSERTS"] as const;
+const tabs = ["PIZZA", "PASTA", "BURGERS", "APPETIZER", "DRINKS", "DESSERTS"] as const;
+
+const tabImages: Record<string, string> = {
+  PIZZA: heroPizza,
+  PASTA: pastaImg,
+  BURGERS: burgerImg,
+  APPETIZER: p2,
+  DRINKS: p4,
+  DESSERTS: p6,
+};
 
 const catalog: Record<string, Product[][]> = {
   PIZZA: [
@@ -28,6 +40,42 @@ const catalog: Record<string, Product[][]> = {
       { name: "Gamberi Piccanti", ingredients: "Prawns, chilli, lemon zest, rocket", price: 15.0, img: p4 },
       { name: "Smoky Ranch", ingredients: "Chicken, bacon, ranch, red onion", price: 12.9, img: p5 },
       { name: "Pepperoni Classic", ingredients: "Double pepperoni, mozzarella, tomato", price: 11.2, img: p6 },
+    ],
+  ],
+  PASTA: [
+    [
+      { name: "Spaghetti Carbonara", ingredients: "Guanciale, egg yolk, pecorino, pepper", price: 12.5, img: pastaImg },
+      { name: "Penne Arrabbiata", ingredients: "Tomato, chilli, garlic, basil", price: 10.9, img: pastaImg },
+      { name: "Tagliatelle Bolognese", ingredients: "Slow-cooked beef ragu, parmesan", price: 13.4, img: pastaImg },
+      { name: "Lasagna Classica", ingredients: "Beef ragu, bechamel, mozzarella", price: 13.9, img: pastaImg },
+      { name: "Pesto Genovese", ingredients: "Basil pesto, pine nuts, green beans", price: 11.6, img: pastaImg },
+      { name: "Gnocchi Quattro Formaggi", ingredients: "Potato gnocchi, four cheese cream", price: 12.8, img: pastaImg },
+    ],
+    [
+      { name: "Seafood Linguine", ingredients: "Prawns, mussels, white wine, parsley", price: 15.4, img: pastaImg },
+      { name: "Truffle Tagliolini", ingredients: "Truffle cream, mushrooms, thyme", price: 16.2, img: pastaImg },
+      { name: "Ravioli Ricotta Spinach", ingredients: "Ricotta, spinach, sage butter", price: 13.2, img: pastaImg },
+      { name: "Amatriciana", ingredients: "Pancetta, tomato, onion, pecorino", price: 12.4, img: pastaImg },
+      { name: "Cacio e Pepe", ingredients: "Pecorino romano, black pepper", price: 11.8, img: pastaImg },
+      { name: "Chicken Alfredo", ingredients: "Grilled chicken, cream, parmesan", price: 13.6, img: pastaImg },
+    ],
+  ],
+  BURGERS: [
+    [
+      { name: "Classic Cheeseburger", ingredients: "Beef patty, cheddar, lettuce, tomato", price: 10.5, img: burgerImg },
+      { name: "Double Smash", ingredients: "Two patties, double cheese, pickles", price: 13.5, img: burgerImg },
+      { name: "Bacon BBQ", ingredients: "Bacon, BBQ sauce, crispy onion", price: 12.8, img: burgerImg },
+      { name: "Spicy Chicken", ingredients: "Crispy chicken, chilli mayo, slaw", price: 11.9, img: burgerImg },
+      { name: "Italiano Burger", ingredients: "Mozzarella, pesto, sun-dried tomato", price: 12.6, img: burgerImg },
+      { name: "Veggie Burger", ingredients: "Chickpea patty, avocado, rocket", price: 10.9, img: burgerImg },
+    ],
+    [
+      { name: "Truffle Mushroom", ingredients: "Beef, truffle mayo, mushrooms, swiss", price: 14.2, img: burgerImg },
+      { name: "Blue Cheese Burger", ingredients: "Beef, gorgonzola, caramelised onion", price: 13.4, img: burgerImg },
+      { name: "Napolitano Special", ingredients: "Beef, nduja, provola, basil mayo", price: 14.8, img: burgerImg },
+      { name: "Crispy Fish Burger", ingredients: "Cod fillet, tartare sauce, lettuce", price: 11.8, img: burgerImg },
+      { name: "Halloumi Burger", ingredients: "Grilled halloumi, pepper relish", price: 11.4, img: burgerImg },
+      { name: "Kids Burger", ingredients: "Mini patty, cheese, fries", price: 7.9, img: burgerImg },
     ],
   ],
   APPETIZER: [
@@ -108,12 +156,20 @@ export function MenuSection({ onAdd }: { onAdd: () => void }) {
           <button
             key={t}
             onClick={() => switchTab(t)}
-            className={`rounded-full px-6 py-2.5 font-display text-lg tracking-widest transition-all duration-300 ${
+            className={`flex items-center gap-3 rounded-full py-2 pl-2 pr-6 font-display text-lg tracking-widest transition-all duration-300 ${
               tab === t
                 ? "scale-105 bg-primary text-primary-foreground"
                 : "bg-surface text-muted-foreground hover:bg-surface-2 hover:text-foreground"
             }`}
           >
+            <img
+              src={tabImages[t]}
+              alt={t.toLowerCase()}
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="h-10 w-10 rounded-full object-cover"
+            />
             {t}
           </button>
         ))}
