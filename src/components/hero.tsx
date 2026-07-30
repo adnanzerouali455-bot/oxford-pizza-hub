@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react";
 import heroPizza from "@/assets/hero-pizza.png";
 import heroBg from "@/assets/hero-bg.mp4.asset.json";
+import heroBgMobile from "@/assets/hero-bg-mobile.mp4.asset.json";
+import heroPoster from "@/assets/hero-poster.jpg.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
+
 
 const perks = [
   { label: "ONLY FRESH PRODUCTS", top: "2%", left: "0%" },
@@ -11,18 +15,41 @@ const perks = [
 
 export function Hero() {
   const { ref, visible } = useReveal<HTMLDivElement>(0.2);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Respect data-saver and reduced-motion: stay on the poster image only.
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
+      ?.saveData;
+    if (reduced || saveData) return;
+    const mobile = window.matchMedia("(max-width: 767px)").matches;
+    setVideoSrc(mobile ? heroBgMobile.url : heroBg.url);
+  }, []);
 
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
-      <video
-        src={heroBg.url}
-        autoPlay
-        muted
-        loop
-        playsInline
+      <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-40"
+        className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center opacity-40"
+        style={{ backgroundImage: `url(${heroPoster.url})` }}
       />
+      {videoSrc && (
+        <video
+          key={videoSrc}
+          src={videoSrc}
+          poster={heroPoster.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          disablePictureInPicture
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center opacity-40"
+        />
+      )}
+
       <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-background/85 via-background/75 to-background" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-4 md:px-8 lg:grid-cols-[1fr_1.05fr]">
