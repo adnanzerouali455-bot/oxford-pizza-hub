@@ -54,15 +54,14 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-4 md:px-8 lg:grid-cols-[1fr_1.05fr]">
         <div>
-          <h1 className="font-display text-6xl leading-[0.95] sm:text-7xl md:text-8xl">
-            BEST <span className="text-primary">PIZZA</span>
-            <br />
-            IN OXFORD
+          <h1 className="font-display text-5xl leading-[0.95] sm:text-6xl md:text-7xl">
+            Authentic Italian Taste{" "}
+            <span className="text-primary" aria-label="Italy">
+              🇮🇹
+            </span>
           </h1>
-          <p className="mt-6 max-w-md text-lg text-muted-foreground">
-            Delivery in 1 hour or the pizza is on us — and take{" "}
-            <span className="font-semibold text-accent">-30%</span> off your second pizza,
-            every single order.
+          <p className="mt-6 max-w-md text-xl text-muted-foreground">
+            Wood-Fired Pizza • Pasta • Burgers.
           </p>
           <a
             href="#menu"
