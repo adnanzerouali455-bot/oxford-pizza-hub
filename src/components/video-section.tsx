@@ -21,7 +21,7 @@ export function VideoSection() {
         <video
           ref={ref}
           src={video.url}
-          className="h-full w-full object-cover"
+          className="aspect-video w-full object-cover"
           playsInline
           loop
           muted

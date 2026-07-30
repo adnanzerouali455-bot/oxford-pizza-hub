@@ -2,10 +2,10 @@ import heroPizza from "@/assets/hero-pizza.png";
 import { useReveal } from "@/hooks/use-reveal";
 
 const perks = [
-  { label: "ONLY FRESH PRODUCTS", top: "6%", left: "-4%" },
-  { label: "DRINKS AS A GIFT", top: "32%", left: "72%" },
-  { label: "FREE SHIPPING", top: "68%", left: "-8%" },
-  { label: "EXCLUSIVE RECIPES", top: "88%", left: "60%" },
+  { label: "ONLY FRESH PRODUCTS", top: "2%", left: "0%" },
+  { label: "DRINKS AS A GIFT", top: "30%", left: "76%" },
+  { label: "FREE SHIPPING", top: "66%", left: "0%" },
+  { label: "EXCLUSIVE RECIPES", top: "94%", left: "56%" },
 ];
 
 export function Hero() {
@@ -33,13 +33,13 @@ export function Hero() {
           </a>
         </div>
 
-        <div ref={ref} className="relative mx-auto w-full max-w-xl">
+        <div ref={ref} className="relative mx-auto w-full max-w-xl px-4 py-10 sm:px-16 sm:py-14">
           <img
             src={heroPizza}
             alt="Freshly baked pepperoni pizza from Oxford Pizza"
             width={1024}
             height={1024}
-            className="relative z-10 w-full drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]"
+            className="relative z-0 w-full drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]"
           />
           <svg
             viewBox="0 0 400 400"
