@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import heroPizza from "@/assets/hero-pizza.png";
 import heroBg from "@/assets/hero-bg.mp4.asset.json";
 import heroBgMobile from "@/assets/hero-bg-mobile.mp4.asset.json";
 import heroPoster from "@/assets/hero-poster.jpg.asset.json";
@@ -71,14 +70,7 @@ export function Hero() {
           </a>
         </div>
 
-        <div ref={ref} className="relative mx-auto w-full max-w-xl px-4 py-10 sm:px-16 sm:py-14">
-          <img
-            src={heroPizza}
-            alt="Freshly baked pepperoni pizza from Oxford Pizza"
-            width={1024}
-            height={1024}
-            className="relative z-0 w-full drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]"
-          />
+        <div ref={ref} className="relative mx-auto aspect-square w-full max-w-xl px-4 py-10 sm:px-16 sm:py-14">
           <svg
             viewBox="0 0 400 400"
             className="pointer-events-none absolute inset-0 z-20 h-full w-full"
