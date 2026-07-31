@@ -89,6 +89,24 @@ const catalog: Record<string, Product[][]> = {
       { name: "Kids Burger", ingredients: "Mini patty, cheese, fries", price: 7.9, img: burgerImg },
     ],
   ],
+  TACOS: [
+    [
+      { name: "Classic Beef Tacos", ingredients: "Grilled beef, cheddar, salsa, sour cream", price: 9.5, img: tacosImg },
+      { name: "Chicken Fajita Tacos", ingredients: "Marinated chicken, peppers, guacamole", price: 9.2, img: tacosImg },
+      { name: "Pulled Pork Tacos", ingredients: "Slow-cooked pork, BBQ sauce, slaw", price: 10.4, img: tacosImg },
+      { name: "Fish Tacos", ingredients: "Crispy cod, lime crema, cabbage", price: 10.9, img: tacosImg },
+      { name: "Veggie Tacos", ingredients: "Roasted vegetables, feta, herb dressing", price: 8.8, img: tacosImg },
+      { name: "Spicy Chorizo Tacos", ingredients: "Chorizo, jalapeño, chipotle mayo", price: 9.8, img: tacosImg },
+    ],
+    [
+      { name: "Steak Tacos", ingredients: "Grilled steak, chimichurri, onions", price: 12.5, img: tacosImg },
+      { name: "Shrimp Tacos", ingredients: "Garlic prawns, mango salsa, avocado", price: 11.8, img: tacosImg },
+      { name: "Breakfast Tacos", ingredients: "Eggs, bacon, cheese, salsa verde", price: 8.5, img: tacosImg },
+      { name: "Buffalo Chicken Tacos", ingredients: "Crispy chicken, buffalo sauce, ranch", price: 10.2, img: tacosImg },
+      { name: "Mushroom Tacos", ingredients: "Sautéed mushrooms, garlic, truffle oil", price: 9.0, img: tacosImg },
+      { name: "Nacho Tacos", ingredients: "Beef, nacho cheese, jalapeños, salsa", price: 10.6, img: tacosImg },
+    ],
+  ],
   APPETIZER: [
     [
       { name: "Garlic Bread", ingredients: "Sourdough, garlic butter, parsley", price: 4.5, img: p2 },
@@ -205,12 +223,18 @@ export function MenuSection({ onAdd }: { onAdd: () => void }) {
             />
             <figcaption className="mt-4 text-center">
               <h3 className="font-display text-2xl tracking-wide text-primary">
-                {tab === "PIZZA" ? "PIZZA NAPOLITANA" : "SIGNATURE BURGER"}
+                {tab === "PIZZA"
+                  ? "PIZZA NAPOLITANA"
+                  : tab === "BURGERS"
+                    ? "SIGNATURE BURGER"
+                    : "SIGNATURE TACOS"}
               </h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 {tab === "PIZZA"
                   ? "Melted cheese • pepperoni • basil"
-                  : "Toasted bun • dripping cheese • grilled patty"}
+                  : tab === "BURGERS"
+                    ? "Toasted bun • dripping cheese • grilled patty"
+                    : "Grilled meat • cheese • salsa • sour cream"}
               </p>
             </figcaption>
           </figure>

@@ -18,7 +18,7 @@ export function RotatingDishes() {
         Fresh out of the wood-fired oven — take a full look around.
       </p>
 
-      <div className="mt-12 grid gap-8 sm:grid-cols-2">
+      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {dishes.map((d) => (
           <figure
             key={d.name}
