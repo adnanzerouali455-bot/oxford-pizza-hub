@@ -6,6 +6,7 @@ import { MenuSection } from "@/components/menu-section";
 import { Promotions } from "@/components/promotions";
 import { Reviews } from "@/components/reviews";
 import { VideoSection } from "@/components/video-section";
+import { RotatingDishes } from "@/components/rotating-dishes";
 import { SiteFooter } from "@/components/site-footer";
 
 const title = "Napolitano Berkane — Best Pizza, Delivered in 1 Hour";
@@ -43,6 +44,8 @@ function Index() {
       <main>
         <Hero />
         <MenuSection onAdd={add} />
+        <RotatingDishes />
+
         <Promotions />
         <Reviews />
         <VideoSection />
