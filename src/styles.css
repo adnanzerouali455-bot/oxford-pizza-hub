@@ -35,6 +35,7 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-crust: var(--crust);
+  --color-gold: var(--gold);
   --font-display: "Bebas Neue", sans-serif;
   --font-sans: "Barlow", sans-serif;
 }
@@ -60,6 +61,7 @@
   --muted: oklch(0.27 0.02 62);
   --muted-foreground: oklch(0.72 0.015 70);
   --crust: oklch(0.78 0.12 70);
+  --gold: #FFC107;
   --destructive: oklch(0.6 0.22 27);
   --destructive-foreground: oklch(0.98 0.003 80);
   --border: oklch(1 0 0 / 12%);

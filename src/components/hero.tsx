@@ -1,19 +1,37 @@
 import { useEffect, useState } from "react";
+import { Flame, Beef, Leaf, Pizza } from "lucide-react";
 import heroBg from "@/assets/hero-bg.mp4.asset.json";
 import heroBgMobile from "@/assets/hero-bg-mobile.mp4.asset.json";
 import heroPoster from "@/assets/hero-poster.jpg.asset.json";
+import heroPizza from "@/assets/hero-pizza.png";
 import { useReveal } from "@/hooks/use-reveal";
 
-
-const perks = [
-  { label: "ONLY FRESH PRODUCTS", top: "2%", left: "0%" },
-  { label: "DRINKS AS A GIFT", top: "30%", left: "76%" },
-  { label: "FREE SHIPPING", top: "66%", left: "0%" },
-  { label: "EXCLUSIVE RECIPES", top: "94%", left: "56%" },
+const features = [
+  {
+    icon: Flame,
+    title: "Wood-Fired Cooking",
+    description: "Authentic wood-fired cooking for a rich smoky flavor and perfect crust.",
+  },
+  {
+    icon: Beef,
+    title: "Tender & Juicy Products",
+    description: "Our charcoal cooking locks in moisture, keeping every bite tender and juicy.",
+  },
+  {
+    icon: Leaf,
+    title: "Fresh Ingredients",
+    description: "Prepared daily using fresh, carefully selected ingredients.",
+  },
+  {
+    icon: Pizza,
+    title: "Perfectly Cooked",
+    description: "Crispy outside, soft inside, cooked to perfection in a traditional charcoal oven.",
+  },
 ];
 
 export function Hero() {
-  const { ref, visible } = useReveal<HTMLDivElement>(0.2);
+  const { ref: imageRef, visible: imageVisible } = useReveal<HTMLDivElement>(0.2);
+  const { ref: featuresRef, visible: featuresVisible } = useReveal<HTMLDivElement>(0.15);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
 
   useEffect(() => {
@@ -27,7 +45,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
+    <section id="top" className="relative overflow-hidden pt-32 md:pt-40">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center opacity-40"
@@ -49,55 +67,68 @@ export function Hero() {
         />
       )}
 
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-background/55 via-background/45 to-background/80" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-background/55 via-background/45 to-background/85" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-4 md:px-8 lg:grid-cols-[1fr_1.05fr]">
-        <div>
-          <h1 className="font-display text-5xl leading-[0.95] sm:text-6xl md:text-7xl">
-            Authentic Italian Taste{" "}
-            <span className="text-primary" aria-label="Italy">
-              🇮🇹
-            </span>
-          </h1>
-          <p className="mt-6 max-w-md text-xl text-muted-foreground">
-            Wood-Fired Pizza • Pasta • Burgers.
-          </p>
-          <a
-            href="#menu"
-            className="btn-yellow mt-9 inline-flex items-center rounded-full px-9 py-4 text-lg"
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 md:px-8">
+        {/* Main hero content: headline + pizza image */}
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+          <div className="text-center lg:text-left">
+            <h1 className="font-display text-5xl leading-[0.95] text-foreground sm:text-6xl md:text-7xl">
+              Authentic Italian Taste{" "}
+              <span className="text-gold" aria-label="Italy">
+                🇮🇹
+              </span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-md text-xl text-white/80 lg:mx-0">
+              Wood-Fired Pizza • Pasta • Burgers.
+            </p>
+            <a
+              href="#menu"
+              className="btn-yellow mt-9 inline-flex items-center rounded-full px-9 py-4 text-lg"
+            >
+              GO TO THE MENU
+            </a>
+          </div>
+
+          <div
+            ref={imageRef}
+            data-visible={imageVisible}
+            className="reveal relative mx-auto aspect-square w-full max-w-lg"
           >
-            GO TO THE MENU
-          </a>
+            <img
+              src={heroPizza}
+              alt="Premium wood-fired pizza"
+              className="relative z-10 h-full w-full object-contain drop-shadow-2xl"
+            />
+            {/* Warm glow behind the pizza */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-[10%] z-0 rounded-full bg-gold/15 blur-[80px]"
+            />
+          </div>
         </div>
 
-        <div ref={ref} className="relative mx-auto aspect-square w-full max-w-xl px-4 py-10 sm:px-16 sm:py-14">
-          <svg
-            viewBox="0 0 400 400"
-            className="pointer-events-none absolute inset-0 z-20 h-full w-full"
-            aria-hidden="true"
-          >
-            <path
-              d="M20 40 C 160 10, 330 90, 340 150 C 350 220, 60 230, 30 290 C 5 340, 210 360, 320 350"
-              fill="none"
-              stroke="var(--accent)"
-              strokeWidth="2"
-              className="dashed-path"
-              opacity={visible ? 0.7 : 0}
-              style={{ transition: "opacity .8s ease" }}
-            />
-          </svg>
-
-          {perks.map((p, i) => (
+        {/* Premium feature cards */}
+        <div
+          ref={featuresRef}
+          className="mt-16 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
+        >
+          {features.map((feature, i) => (
             <div
-              key={p.label}
-              data-visible={visible}
-              className="reveal absolute z-30 flex items-center gap-2"
-              style={{ top: p.top, left: p.left, transitionDelay: `${300 + i * 220}ms` }}
+              key={feature.title}
+              data-visible={featuresVisible}
+              className="reveal group flex flex-col items-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-white/[0.08] hover:shadow-gold/10 sm:items-start sm:text-left"
+              style={{ transitionDelay: `${120 + i * 90}ms` }}
             >
-              <span className="h-3 w-3 shrink-0 rounded-full bg-accent ring-4 ring-accent/25" />
-              <span className="rounded-full bg-surface/90 px-3 py-1 font-display text-xs tracking-widest whitespace-nowrap sm:text-sm">
-                {p.label}
-              </span>
+              <div className="mb-3 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/60 bg-gold/10 text-gold transition-all duration-300 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold/15 group-hover:shadow-[0_0_24px_-4px_rgba(255,193,7,0.35)]">
+                <feature.icon className="h-5 w-5" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-display text-base tracking-wide text-white sm:text-lg">
+                {feature.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/65">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
