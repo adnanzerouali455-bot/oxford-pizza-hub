@@ -117,13 +117,13 @@ export function Hero() {
             <div
               key={feature.title}
               data-visible={featuresVisible}
-              className="reveal group flex flex-col items-center rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-white/[0.08] hover:shadow-gold/10 sm:items-start sm:text-left"
-              style={{ transitionDelay: `${200 + i * 120}ms` }}
+              className="reveal group flex flex-col items-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-white/[0.08] hover:shadow-gold/10 sm:items-start sm:text-left"
+              style={{ transitionDelay: `${120 + i * 90}ms` }}
             >
-              <div className="mb-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-gold/60 bg-gold/10 text-gold transition-all duration-300 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold/15 group-hover:shadow-[0_0_24px_-4px_rgba(255,193,7,0.35)]">
-                <feature.icon className="h-6 w-6" strokeWidth={1.5} />
+              <div className="mb-3 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/60 bg-gold/10 text-gold transition-all duration-300 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold/15 group-hover:shadow-[0_0_24px_-4px_rgba(255,193,7,0.35)]">
+                <feature.icon className="h-5 w-5" strokeWidth={1.5} />
               </div>
-              <h3 className="font-display text-lg tracking-wide text-white">
+              <h3 className="font-display text-base tracking-wide text-white sm:text-lg">
                 {feature.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/65">
