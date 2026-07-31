@@ -182,6 +182,37 @@ export function MenuSection({ onAdd }: { onAdd: () => void }) {
         ))}
       </div>
 
+      {tabVideos[tab] && (
+        <div
+          key={`video-${tab}`}
+          className="mt-10 animate-[fade-in_.6s_ease-out,scale-in_.5s_ease-out]"
+        >
+          <figure className="relative mx-auto max-w-md overflow-hidden rounded-3xl bg-surface p-4 shadow-lg">
+            <video
+              src={tabVideos[tab]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              disablePictureInPicture
+              aria-label={`${tab.toLowerCase()} rotating 360 degrees`}
+              className="aspect-square w-full rounded-2xl object-cover"
+            />
+            <figcaption className="mt-4 text-center">
+              <h3 className="font-display text-2xl tracking-wide text-primary">
+                {tab === "PIZZA" ? "PIZZA NAPOLITANA" : "SIGNATURE BURGER"}
+              </h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {tab === "PIZZA"
+                  ? "Melted cheese • pepperoni • basil"
+                  : "Toasted bun • dripping cheese • grilled patty"}
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+      )}
+
       <div key={`${tab}-${page}`} className="mt-10 grid animate-[fade-in_.45s_ease-out] gap-6 md:grid-cols-2">
         {items.map((item) => (
           <article
