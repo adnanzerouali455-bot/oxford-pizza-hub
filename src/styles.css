@@ -35,6 +35,7 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-crust: var(--crust);
+  --color-gold: var(--gold);
   --font-display: "Bebas Neue", sans-serif;
   --font-sans: "Barlow", sans-serif;
 }
