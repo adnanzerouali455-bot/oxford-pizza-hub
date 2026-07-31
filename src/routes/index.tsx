@@ -44,6 +44,8 @@ function Index() {
       <main>
         <Hero />
         <MenuSection onAdd={add} />
+        <RotatingDishes />
+
         <Promotions />
         <Reviews />
         <VideoSection />
