@@ -111,13 +111,13 @@ export function Hero() {
         {/* Premium feature cards */}
         <div
           ref={featuresRef}
-          className="mt-16 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4"
+          className="mt-16 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
         >
           {features.map((feature, i) => (
             <div
               key={feature.title}
               data-visible={featuresVisible}
-              className="reveal group flex flex-col items-center rounded-2xl border border-white/10 bg-white/[0.04] p-6 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-white/[0.08] hover:shadow-gold/10 sm:items-start sm:text-left"
+              className="reveal group flex flex-col items-center rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-white/[0.08] hover:shadow-gold/10 sm:items-start sm:text-left"
               style={{ transitionDelay: `${200 + i * 120}ms` }}
             >
               <div className="mb-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-gold/60 bg-gold/10 text-gold transition-all duration-300 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold/15 group-hover:shadow-[0_0_24px_-4px_rgba(255,193,7,0.35)]">
