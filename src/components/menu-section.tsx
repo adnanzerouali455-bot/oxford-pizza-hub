@@ -25,6 +25,11 @@ const tabImages: Record<string, string> = {
   DESSERTS: p6,
 };
 
+const tabVideos: Record<string, string | undefined> = {
+  PIZZA: pizzaLoop.url,
+  BURGERS: burgerLoop.url,
+};
+
 const catalog: Record<string, Product[][]> = {
   PIZZA: [
     [
