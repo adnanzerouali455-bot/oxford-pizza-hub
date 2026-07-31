@@ -9,6 +9,8 @@ import p6 from "@/assets/pizza-6.png";
 import pastaImg from "@/assets/pasta-1.png";
 import burgerImg from "@/assets/burger-1.png";
 import heroPizza from "@/assets/hero-pizza.png";
+import pizzaLoop from "@/assets/rotating-pizza.mp4.asset.json";
+import burgerLoop from "@/assets/rotating-burger.mp4.asset.json";
 
 type Product = { name: string; ingredients: string; price: number; img: string };
 
