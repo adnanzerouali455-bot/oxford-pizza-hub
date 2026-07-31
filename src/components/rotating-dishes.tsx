@@ -1,9 +1,11 @@
 import pizzaLoop from "@/assets/rotating-pizza.mp4.asset.json";
 import burgerLoop from "@/assets/rotating-burger.mp4.asset.json";
+import tacosLoop from "@/assets/rotating-tacos.mp4.asset.json";
 
 const dishes = [
   { src: pizzaLoop.url, name: "PIZZA NAPOLITANA", note: "Melted cheese • pepperoni • basil" },
   { src: burgerLoop.url, name: "SIGNATURE BURGER", note: "Toasted bun • dripping cheese • grilled patty" },
+  { src: tacosLoop.url, name: "SIGNATURE TACOS", note: "Grilled meat • cheese • salsa • sour cream" },
 ];
 
 export function RotatingDishes() {

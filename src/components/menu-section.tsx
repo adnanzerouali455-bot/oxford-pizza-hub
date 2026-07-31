@@ -8,18 +8,21 @@ import p5 from "@/assets/pizza-5.png";
 import p6 from "@/assets/pizza-6.png";
 import pastaImg from "@/assets/pasta-1.png";
 import burgerImg from "@/assets/burger-1.png";
+import tacosImg from "@/assets/tacos-1.png";
 import heroPizza from "@/assets/hero-pizza.png";
 import pizzaLoop from "@/assets/rotating-pizza.mp4.asset.json";
 import burgerLoop from "@/assets/rotating-burger.mp4.asset.json";
+import tacosLoop from "@/assets/rotating-tacos.mp4.asset.json";
 
 type Product = { name: string; ingredients: string; price: number; img: string };
 
-const tabs = ["PIZZA", "PASTA", "BURGERS", "APPETIZER", "DRINKS", "DESSERTS"] as const;
+const tabs = ["PIZZA", "PASTA", "BURGERS", "TACOS", "APPETIZER", "DRINKS", "DESSERTS"] as const;
 
 const tabImages: Record<string, string> = {
   PIZZA: heroPizza,
   PASTA: pastaImg,
   BURGERS: burgerImg,
+  TACOS: tacosImg,
   APPETIZER: p2,
   DRINKS: p4,
   DESSERTS: p6,
@@ -28,6 +31,7 @@ const tabImages: Record<string, string> = {
 const tabVideos: Record<string, string | undefined> = {
   PIZZA: pizzaLoop.url,
   BURGERS: burgerLoop.url,
+  TACOS: tacosLoop.url,
 };
 
 const catalog: Record<string, Product[][]> = {
