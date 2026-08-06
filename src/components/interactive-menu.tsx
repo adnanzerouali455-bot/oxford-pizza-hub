@@ -19,6 +19,14 @@ type Item = {
 
 type Category = { id: string; label: string; icon: string; items: Item[] };
 
+type OnAddPayload = {
+  name: string;
+  description?: string;
+  img: string;
+  sizeLabel: string;
+  price: number;
+};
+
 const pizzaImgs = [p1, p2, p3, p4, p5, p6];
 const pz = (i: number) => pizzaImgs[i % pizzaImgs.length];
 
