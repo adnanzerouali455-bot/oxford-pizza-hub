@@ -45,7 +45,6 @@ function PageContent({ onOpenBasket }: { onOpenBasket: () => void }) {
   const [bump, setBump] = useState(false);
 
   const handleAdd = (item: Omit<CartItem, "quantity" | "id"> & { id?: string }) => {
-    console.log("handleAdd called", item);
     const cartItem: Omit<CartItem, "quantity"> = {
       id: item.id || `${item.name}-${item.sizeLabel}`,
       name: item.name,
