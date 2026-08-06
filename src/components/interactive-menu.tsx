@@ -222,7 +222,7 @@ function ItemCard({
   );
 }
 
-export function InteractiveMenu({ onAdd }: { onAdd: () => void }) {
+export function InteractiveMenu({ onAdd }: { onAdd: (payload: OnAddPayload) => void }) {
   const [cat, setCat] = useState(categories[0].id);
   const scroller = useRef<HTMLDivElement>(null);
   const active = useMemo(() => categories.find((c) => c.id === cat)!, [cat]);
