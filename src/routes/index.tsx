@@ -3,6 +3,7 @@ import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
 import { MenuSection } from "@/components/menu-section";
+import { InteractiveMenu } from "@/components/interactive-menu";
 import { Promotions } from "@/components/promotions";
 import { Reviews } from "@/components/reviews";
 import { VideoSection } from "@/components/video-section";
@@ -43,8 +44,10 @@ function Index() {
       <SiteHeader count={count} bump={bump} />
       <main>
         <Hero />
+        <InteractiveMenu onAdd={add} />
         <MenuSection onAdd={add} />
         <RotatingDishes />
+
 
         <Promotions />
         <Reviews />
