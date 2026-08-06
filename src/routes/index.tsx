@@ -44,8 +44,8 @@ function Index() {
       <SiteHeader count={count} bump={bump} />
       <main>
         <Hero />
-        <InteractiveMenu onAdd={add} />
-        <MenuSection onAdd={add} />
+      <InteractiveMenu onAdd={add} />
+
         <RotatingDishes />
 
 
