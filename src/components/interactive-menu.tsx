@@ -159,7 +159,7 @@ function ItemCard({
 }: {
   item: Item;
   isSupplement: boolean;
-  onAdd: () => void;
+  onAdd: (payload: OnAddPayload) => void;
 }) {
   const [size, setSize] = useState(0);
   const price = item.prices[size].price;
