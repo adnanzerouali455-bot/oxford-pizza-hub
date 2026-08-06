@@ -203,7 +203,18 @@ function ItemCard({
           {isSupplement ? "+" : ""}
           {price} <span className="text-lg text-muted-foreground">DH</span>
         </span>
-        <button onClick={onAdd} className="btn-yellow flex items-center gap-1 rounded-full px-4 py-2 text-sm">
+        <button
+          onClick={() =>
+            onAdd({
+              name: item.name,
+              description: item.desc,
+              img: item.img,
+              sizeLabel: item.prices[size].label,
+              price: item.prices[size].price,
+            })
+          }
+          className="btn-yellow flex items-center gap-1 rounded-full px-4 py-2 text-sm"
+        >
           <Plus className="h-4 w-4" /> AJOUTER
         </button>
       </div>
