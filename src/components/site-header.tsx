@@ -3,7 +3,15 @@ import logo from "@/assets/napolitano-logo.jpg.asset.json";
 
 const links = ["MENU", "SHARES", "REVIEWS", "CONTACTS"];
 
-export function SiteHeader({ count, bump }: { count: number; bump: boolean }) {
+export function SiteHeader({
+  count,
+  bump,
+  onBasketClick,
+}: {
+  count: number;
+  bump: boolean;
+  onBasketClick: () => void;
+}) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center gap-6 px-4 md:px-8">
@@ -33,8 +41,8 @@ export function SiteHeader({ count, bump }: { count: number; bump: boolean }) {
         <div className="ml-auto hidden items-center gap-3 md:flex">
           <Phone className="h-4 w-4 text-primary" />
           <div className="leading-tight">
-            <a href="tel:+441865000000" className="block font-display text-lg">
-              +44 1865 000 000
+            <a href="tel:+212698043729" className="block font-display text-lg">
+              06 98 04 37 29
             </a>
             <button className="text-xs text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary">
               order a call back
@@ -42,7 +50,10 @@ export function SiteHeader({ count, bump }: { count: number; bump: boolean }) {
           </div>
         </div>
 
-        <button className="ml-auto flex items-center gap-2 rounded-full border border-border px-4 py-2 transition-colors hover:border-primary md:ml-6">
+        <button
+          onClick={onBasketClick}
+          className="ml-auto flex items-center gap-2 rounded-full border border-border px-4 py-2 transition-colors hover:border-primary md:ml-6"
+        >
           <ShoppingBasket className={`h-5 w-5 text-accent ${bump ? "bounce-cart" : ""}`} />
           <span className="font-display text-sm tracking-wider">
             BASKET {count === 0 ? "(empty)" : `(${count})`}

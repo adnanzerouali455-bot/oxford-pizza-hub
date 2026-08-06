@@ -19,6 +19,14 @@ type Item = {
 
 type Category = { id: string; label: string; icon: string; items: Item[] };
 
+type OnAddPayload = {
+  name: string;
+  description?: string;
+  img: string;
+  sizeLabel: string;
+  price: number;
+};
+
 const pizzaImgs = [p1, p2, p3, p4, p5, p6];
 const pz = (i: number) => pizzaImgs[i % pizzaImgs.length];
 
@@ -151,7 +159,7 @@ function ItemCard({
 }: {
   item: Item;
   isSupplement: boolean;
-  onAdd: () => void;
+  onAdd: (payload: OnAddPayload) => void;
 }) {
   const [size, setSize] = useState(0);
   const price = item.prices[size].price;
@@ -195,7 +203,18 @@ function ItemCard({
           {isSupplement ? "+" : ""}
           {price} <span className="text-lg text-muted-foreground">DH</span>
         </span>
-        <button onClick={onAdd} className="btn-yellow flex items-center gap-1 rounded-full px-4 py-2 text-sm">
+        <button
+          onClick={() =>
+            onAdd({
+              name: item.name,
+              description: item.desc,
+              img: item.img,
+              sizeLabel: item.prices[size].label,
+              price: item.prices[size].price,
+            })
+          }
+          className="btn-yellow flex items-center gap-1 rounded-full px-4 py-2 text-sm"
+        >
           <Plus className="h-4 w-4" /> AJOUTER
         </button>
       </div>
@@ -203,7 +222,7 @@ function ItemCard({
   );
 }
 
-export function InteractiveMenu({ onAdd }: { onAdd: () => void }) {
+export function InteractiveMenu({ onAdd }: { onAdd: (payload: OnAddPayload) => void }) {
   const [cat, setCat] = useState(categories[0].id);
   const scroller = useRef<HTMLDivElement>(null);
   const active = useMemo(() => categories.find((c) => c.id === cat)!, [cat]);
