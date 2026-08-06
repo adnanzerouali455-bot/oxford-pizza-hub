@@ -2,13 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
-
 import { InteractiveMenu } from "@/components/interactive-menu";
 import { Promotions } from "@/components/promotions";
 import { Reviews } from "@/components/reviews";
 import { VideoSection } from "@/components/video-section";
 import { RotatingDishes } from "@/components/rotating-dishes";
 import { SiteFooter } from "@/components/site-footer";
+import { BasketDrawer } from "@/components/basket-drawer";
+import { CartProvider, useCart, type CartItem } from "@/lib/cart";
 
 const title = "Napolitano Berkane — Best Pizza, Delivered in 1 Hour";
 const description =
@@ -29,11 +30,30 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [count, setCount] = useState(0);
+  const [basketOpen, setBasketOpen] = useState(false);
+
+  return (
+    <CartProvider>
+      <PageContent onOpenBasket={() => setBasketOpen(true)} />
+      <BasketDrawer open={basketOpen} onClose={() => setBasketOpen(false)} />
+    </CartProvider>
+  );
+}
+
+function PageContent({ onOpenBasket }: { onOpenBasket: () => void }) {
+  const { addItem, count } = useCart();
   const [bump, setBump] = useState(false);
 
-  const add = () => {
-    setCount((c) => c + 1);
+  const handleAdd = (item: Omit<CartItem, "quantity" | "id"> & { id?: string }) => {
+    const cartItem: Omit<CartItem, "quantity"> = {
+      id: item.id || `${item.name}-${item.sizeLabel}`,
+      name: item.name,
+      description: item.description,
+      img: item.img,
+      sizeLabel: item.sizeLabel,
+      price: item.price,
+    };
+    addItem(cartItem);
     setBump(false);
     requestAnimationFrame(() => setBump(true));
     setTimeout(() => setBump(false), 700);
@@ -41,14 +61,11 @@ function Index() {
 
   return (
     <div className="min-h-screen">
-      <SiteHeader count={count} bump={bump} />
+      <SiteHeader count={count} bump={bump} onBasketClick={onOpenBasket} />
       <main>
         <Hero />
-      <InteractiveMenu onAdd={add} />
-
+        <InteractiveMenu onAdd={handleAdd} />
         <RotatingDishes />
-
-
         <Promotions />
         <Reviews />
         <VideoSection />
