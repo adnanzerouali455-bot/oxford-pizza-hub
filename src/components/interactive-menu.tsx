@@ -7,6 +7,7 @@ import p4 from "@/assets/pizza-4.png";
 import p5 from "@/assets/pizza-5.png";
 import p6 from "@/assets/pizza-6.png";
 import burgerPhoto from "@/assets/burger-photo.png.asset.json";
+const burgerImg = burgerPhoto.url;
 import tacosImg from "@/assets/tacos-1.png";
 import heroPizza from "@/assets/hero-pizza.png";
 
