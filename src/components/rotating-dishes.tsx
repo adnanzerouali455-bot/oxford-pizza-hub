@@ -1,5 +1,5 @@
 import pizzaLoop from "@/assets/rotating-pizza.mp4.asset.json";
-import burgerLoop from "@/assets/rotating-burger.mp4.asset.json";
+import burgerLoop from "@/assets/burger-floating.mp4.asset.json";
 import tacosLoop from "@/assets/rotating-tacos.mp4.asset.json";
 
 const dishes = [
